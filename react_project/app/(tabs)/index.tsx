@@ -4,13 +4,20 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 export default function HomeScreen() {
   const text = "HokieServe";
+  const angles = [-25, -20, -25, -1, 0, 5, 10, 15, 20, 25]; // Adjusted angles for smoother curve
+  const translations = [-60, -50, -40, -30, 0, 20, 30, 40, 50, 60]; // Centered translations
 
   const curvedText = text.split('').map((char, index) => (
     <Text
       key={index}
       style={[
         styles.HokieServeTxt,
-        
+        {
+          transform: [
+            { rotate: `${angles[index]}deg` },
+            { translateX: translations[index] },
+          ]
+        }
       ]}
     >
       {char}
@@ -43,6 +50,7 @@ const styles = StyleSheet.create({
   hokiebirdLogo: {
     width: 500,
     height: 500,
+    bottom: -75,
     resizeMode: 'contain',
   },
   textContainer: {
@@ -55,6 +63,7 @@ const styles = StyleSheet.create({
   },
   HokieServeTxt: {
     fontSize: 40,
+    bottom: -50,
     fontWeight: 'bold',
     color: '#FF6600', // Virginia Tech orange
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
