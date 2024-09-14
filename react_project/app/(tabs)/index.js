@@ -1,8 +1,10 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import LoginScreen from '../LoginScreen/LoginScreen'; // Adjust the path as needed
 
-export default function HomeScreen() {
+export default function App() {
+  const [showLogin, setShowLogin] = useState(false);
+
   const text = "HokieServe";
   const angles = [-25, -20, -25, -1, 0, 5, 10, 15, 20, 25];
   const translations = [-60, -50, -40, -30, 0, 20, 30, 40, 50, 60];
@@ -24,36 +26,50 @@ export default function HomeScreen() {
     </Text>
   ));
 
+  if (showLogin) {
+    return <LoginScreen onBack={() => setShowLogin(false)} />;
+  }
+
   return (
-    <ParallaxScrollView
-      headerImage={
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
         <View style={styles.imageContainer}>
           <TouchableOpacity style={styles.profileButton} onPress={() => console.log('Profile pressed')}>
             <Text style={styles.profileText}>Profile</Text>
           </TouchableOpacity>
-          <Image
-            source={require('@/assets/images/hokiebird.png')}
-            style={styles.hokiebirdLogo}
-          />
+          <TouchableOpacity onPress={() => setShowLogin(true)}>
+            <Image
+              source={require('@/assets/images/hokiebird.png')}
+              style={styles.hokiebirdLogo}
+            />
+          </TouchableOpacity>
           <View style={styles.textContainer}>
             {curvedText}
           </View>
         </View>
-      }
-    />
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  scrollView: {
+    flex: 1,
+  },
   imageContainer: {
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
+    height: 1000, // Example height
   },
   hokiebirdLogo: {
     width: 500,
     height: 500,
-    bottom: -75,
+    bottom: 100,
     resizeMode: 'contain',
   },
   textContainer: {
@@ -75,9 +91,9 @@ const styles = StyleSheet.create({
   },
   profileButton: {
     position: 'absolute',
-    top: -125,
-    right: -500,
-    padding: 10,
+    top: 10,
+    right: 10,
+    padding: 15,
     backgroundColor: '#FF6600',
     borderRadius: 5,
   },
