@@ -1,22 +1,17 @@
-import React from 'react';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import type { ReactElement } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
 
 type Props = {
-  headerImage: React.ReactElement;
+  headerImage: ReactElement;
 };
 
 export default function ParallaxScrollView({ headerImage }: Props) {
   return (
     <ThemedView style={styles.container}>
-      <ImageBackground
-        source={require('@/assets/images/vtcampus.png')} // Replace with your background image
-        style={styles.background}
-      >
-        <View style={styles.imageContainer}>
-          {headerImage}
-        </View>
-      </ImageBackground>
+      <View style={styles.imageContainer}>
+        {headerImage}
+      </View>
     </ThemedView>
   );
 }
@@ -24,15 +19,12 @@ export default function ParallaxScrollView({ headerImage }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  background: {
-    flex: 1,
-    
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'white',
   },
   imageContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
 });
