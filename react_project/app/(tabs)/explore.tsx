@@ -30,10 +30,10 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerImage={ 
         <View style={styles.imageContainer}>
-          {/* Profile Button at the top right */}
+          {/* Profile Button at the top right
           <TouchableOpacity style={styles.profileButton} onPress={() => console.log('Profile pressed')}>
             <Text style={styles.profileText}>Profile</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           
           {/* Hokie Serve text */}
           <View style={styles.curvedTextContainer}>
@@ -42,12 +42,20 @@ export default function HomeScreen() {
 
           {/* Request Service text and input */}
           <View style={styles.requestServiceContainer}>
-            <ThemedText type="title" style={styles.requestServiceText}>Request Service</ThemedText>
-            <Text style={styles.subText}>Submit a Help Request Below:</Text>
-            <TextInput
-              style={styles.inputBox}
-              placeholder="Search for services you would like to offer!"
-            />
+            <TouchableOpacity style={styles.serviceButton} onPress={() => console.log('Search button pressed')}>
+            <ThemedText type="title" style={styles.requestServiceText}>Request Service</ThemedText></TouchableOpacity>
+            <Text style={styles.subText}>Submit a Help Request Using the Button Above:</Text>
+            
+            {/* Container for the search bar and button */}
+            <View style={styles.searchContainer}>
+              <TextInput
+                style={styles.searchBar}
+                placeholder="Search for services you would like to offer!"
+              />
+              <TouchableOpacity style={styles.searchButton} onPress={() => console.log('Search button pressed')}>
+                <Text style={styles.buttonText}>Search</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       }
@@ -59,17 +67,19 @@ const styles = StyleSheet.create({
   imageContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     padding: 20,
   },
   // Hokie Serve curved text container
   curvedTextContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginTop: 1,
+    marginBottom: 30,
   },
   HokieServeTxt: {
     fontSize: 40,
+    top: 10,
     fontWeight: 'bold',
     color: '#FF6600',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -77,15 +87,15 @@ const styles = StyleSheet.create({
     textShadowRadius: 10,
   },
   // Profile button styling
-  profileButton: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    padding: 10,
-    backgroundColor: '#FF6600',
-    borderRadius: 5,
-    zIndex: 1,
-  },
+  // profileButton: {
+  //   position: 'absolute',
+  //   top: 10,
+  //   right: 10,
+  //   padding: 10,
+  //   backgroundColor: '#FF6600',
+  //   borderRadius: 5,
+  //   zIndex: 1,
+  // },
   profileText: {
     color: '#FFF',
     fontWeight: 'bold',
@@ -94,21 +104,47 @@ const styles = StyleSheet.create({
   requestServiceContainer: {
     alignItems: 'center',
     width: '100%',
+    marginBottom: 30,
   },
   requestServiceText: {
     fontSize: 24,
     marginBottom: 10,
-    color: '#861F41'
+    color: 'white',
   },
   subText: {
-    fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 30,
+    fontSize: 18, // Larger text size
+    fontWeight: 'bold', // Make text bold
+    alignItems: 'center'
   },
-  inputBox: {
-    width: '80%',
+  // Container for the search bar and search button
+  searchContainer: {
+    flexDirection: 'row', // Arrange items in a row
+    alignItems: 'center', // Center items vertically
+  },
+  searchBar: {
+    flex: 1, // Take up remaining space
     padding: 10,
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 5,
+    marginRight: 10, // Space between the search bar and the button
+    width: 300,
   },
+  searchButton: {
+    backgroundColor: '#861F41',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+  },
+  serviceButton: {
+    backgroundColor: '#861F41',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  }
 });
