@@ -1,3 +1,1 @@
-public class UserService {
-    
-}
+package com.mongodb.starter.services;

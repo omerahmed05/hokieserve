@@ -1,3 +1,1 @@
-public class SolutionService {
-    
-}
+package com.mongodb.starter.services;

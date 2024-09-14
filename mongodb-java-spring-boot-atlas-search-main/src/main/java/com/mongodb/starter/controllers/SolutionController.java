@@ -1,1 +1,1 @@
-package hs.controller;
+package com.mongodb.starter.controllers;
