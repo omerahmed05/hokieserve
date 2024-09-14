@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HokieServe",
-    "slug": "HokieServe",
+    "name": "react_project",
+    "slug": "react_project",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
