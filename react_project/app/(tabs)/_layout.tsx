@@ -6,13 +6,22 @@ import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+const MAROON_COLOR = '#630031';
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: 'white',
+        tabBarInactiveTintColor: 'rgba(255, 255, 255, 0.7)', // slightly transparent white for inactive tabs
+        tabBarStyle: {
+          backgroundColor: MAROON_COLOR,
+        },
+        tabBarLabelStyle: {
+          color: 'white',
+        },
         headerShown: false,
       }}>
       <Tabs.Screen
@@ -20,7 +29,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color="white" />
           ),
         }}
       />
@@ -29,7 +38,7 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'globe' : 'globe-outline'} color={color} />
+            <TabBarIcon name={focused ? 'globe' : 'globe-outline'} color="white" />
           ),
         }}
       />
@@ -38,7 +47,7 @@ export default function TabLayout() {
         options={{
           title: 'Help',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'help-circle' : 'help-circle-outline'} color={color} />
+            <TabBarIcon name={focused ? 'help-circle' : 'help-circle-outline'} color="white" />
           ),
         }}
       />
