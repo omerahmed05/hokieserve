@@ -43,7 +43,7 @@ export default function LoginScreen({ onBack }: LoginScreenProps) {
           }}
         />
       </View>
-      <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer1}>
         <Button title="Back to Home" onPress={onBack} />
       </View>
     </View>
@@ -64,5 +64,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginVertical: 10,
+  },
+  buttonContainer1: {
+    right: 705,
+    bottom: -315,
   },
 });
