@@ -1,13 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity, TextInput, ImageBackground} from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
+
   const text = "HokieServe";
   const angles = [-25, -20, -15, -10, 0, 5, 10, 15, 20, 25];
   const translations = [-60, -50, -40, -30, -10, 20, 30, 40, 50, 60];
+
+  const [serviceRequest, setServiceRequest] = useState('');
+  
+  const handleServiceRequest = () => {
+    console.log('Service request:', serviceRequest);
+    //send the service request backend once implemented
+    
+    // Clear the input field after submitting
+    setServiceRequest('');
+  };
+
+  const handleButtonPress = () => {
+    console.log('Button has been pressed');
+    handleServiceRequest();
+  };
 
   const curvedText = text.split('').map((char, index) => (
     <Text
@@ -51,9 +67,9 @@ export default function HomeScreen() {
             <View style={styles.helpInputContainer}>
             <TextInput
                 style={styles.helpBar}
-                placeholder="Briefly enter your service request"
+                placeholder="Briefly enter your service request" value={serviceRequest} onChangeText={setServiceRequest}
               />
-              <TouchableOpacity style={styles.helpButton} onPress={() => console.log('Search button pressed')}>
+              <TouchableOpacity style={styles.helpButton} onPress={handleButtonPress} >
                 <Text style={styles.helpButtonText}>Enter Request</Text>
               </TouchableOpacity>
               </View>
