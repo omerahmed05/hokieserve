@@ -100,5 +100,6 @@ const styles = StyleSheet.create({
   profileText: {
     color: '#FFF',
     fontWeight: 'bold',
+    //taking a coffee break 
   },
 });
