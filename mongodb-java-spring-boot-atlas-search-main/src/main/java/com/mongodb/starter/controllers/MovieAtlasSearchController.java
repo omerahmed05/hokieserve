@@ -24,6 +24,8 @@ public class MovieAtlasSearchController {
     @GetMapping("with/{keywords}")
     Collection<Document> getMoviesWithKeywords(@PathVariable String keywords,
                                                @RequestParam(value = "limit", defaultValue = "5") int limit) {
+        System.out.println("got keyword: ");
+        System.out.println(keywords);
         return movieAtlasSearchService.moviesByKeywords(keywords, limit);
     }
 

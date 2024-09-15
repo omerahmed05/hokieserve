@@ -34,14 +34,16 @@ public class MovieAtlasSearchServiceImpl implements MovieAtlasSearchService {
 
     public Collection<Document> moviesByKeywords(String keywords, int limit) {
         LOGGER.info("=> Searching movies by keywords: {} with limit {}", keywords, limit);
-        Bson searchStage = search(text(fieldPath("fullplot"), keywords), searchOptions().index(index));
+        //Bson searchStage = search(text(fieldPath("fullplot"), keywords), searchOptions().index(index));
         Bson projectStage = project(fields(excludeId(), include("title", "year", "fullplot", "imdb.rating")));
         Bson limitStage = limit(limit);
-        List<Bson> pipeline = List.of(searchStage, projectStage, limitStage);
+        List<Bson> pipeline = List.of(projectStage, limitStage);
         List<Document> docs = collection.aggregate(pipeline).into(new ArrayList<>());
         if (docs.isEmpty()) {
             throw new EntityNotFoundException("moviesByKeywords", keywords);
         }
+        System.out.println("AHH!");
+        System.out.println(docs);
         return docs;
     }
 
