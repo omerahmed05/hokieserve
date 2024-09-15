@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, TextInput, ImageBackground} from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -29,6 +29,8 @@ export default function HomeScreen() {
   return (
     <ParallaxScrollView
       headerImage={
+        <ImageBackground
+                source={require('@/assets/images/vtTorgBridge.jpg')} style={styles.VTCampus} >
         <View style={styles.imageContainer}>
           {/* Profile Button at the top right */}
           {/* <TouchableOpacity style={styles.profileButton} onPress={() => console.log('Profile pressed')}>
@@ -58,11 +60,16 @@ export default function HomeScreen() {
           </ThemedView>
 
           {/* Hokiebird Image */}
-          <Image
+          {/* <Image
             source={require('@/assets/images/hokiebird.png')}
             style={styles.hokiebirdLogo}
-          />
+          /> */}
+          {/* <Image
+            source={require('@/assets/images/vtCampusNice.png')}
+            style={styles.VTCampus}
+          /> */}
         </View>
+        </ImageBackground>
       }
     />
   );
@@ -76,14 +83,29 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
  
-  hokiebirdLogo: {
-    width: 70,
-    height: 70,
-    marginVertical: 20,
-    marginBottom: 1,
-    marginTop: 1,
-    resizeMode: 'contain',
+  // VTCampus: {
+  //   width: 500,
+  //   height: 500,
+  //   marginVertical: 20,
+  //   marginBottom: 1,
+  //   marginTop: 1,
+  //   resizeMode: 'contain',
+  //   bottom: 100,
+  // },
+    VTCampus: {
+    // width: 500,
+    // height: 500,
+    // marginVertical: 20,
+    // marginBottom: 1,
+    // marginTop: 1,
+    // resizeMode: 'contain',
+    // bottom: 100,
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
+
   textContainer: {
     //marginVertical: 20,
     flexDirection: 'row',
@@ -118,7 +140,7 @@ const styles = StyleSheet.create({
     borderWidth: 2, // Adding border width
     //borderColor: 'maroon', // Setting the border color to maroon
     borderRadius: 10, // Optional: Rounded corners for the box
-    backgroundColor: '#FF6600',
+    backgroundColor: 'white',
     marginVertical: 20,
     width: '100%',
   },
@@ -126,6 +148,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#FF6600'
   },
   helpText: {
     fontSize: 18, // Larger text size
@@ -154,7 +177,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 5,
     marginTop: 10, 
-    width: '90%',
+    width: 'auto',
     alignItems: 'center'
   },
   helpButtonText: {
@@ -166,5 +189,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     marginTop: 20,
-  }
+  },
+  // hokiebirdLogo: {
+  //   width: 70,
+  //   height: 70,
+  //   marginVertical: 20,
+  //   marginBottom: 1,
+  //   marginTop: 1,
+  //   resizeMode: 'contain',
+  // },
 });

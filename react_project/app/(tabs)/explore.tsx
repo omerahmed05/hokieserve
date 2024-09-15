@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image, ImageBackground } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -29,6 +29,8 @@ export default function HomeScreen() {
   return (
     <ParallaxScrollView
       headerImage={ 
+        <ImageBackground
+                source={require('@/assets/images/vtCampusNice.png')} style={styles.VTCampus} >
         <View style={styles.imageContainer}>
           {/* Profile Button at the top right
           <TouchableOpacity style={styles.profileButton} onPress={() => console.log('Profile pressed')}>
@@ -56,8 +58,13 @@ export default function HomeScreen() {
                 <Text style={styles.buttonText}>Search</Text>
               </TouchableOpacity>
             </View>
+            {/* <Image
+            source={require('@/assets/images/hokiebird.png')}
+            style={styles.hokiebirdLogo}
+          /> */}
           </View>
         </View>
+        </ImageBackground>
       }
     />
   );
@@ -69,6 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: 20,
+    backgroundColor: 'rgba(255,255,255,0.5)',
   },
   // Hokie Serve curved text container
   curvedTextContainer: {
@@ -139,5 +147,29 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
-  }
+  },
+   VTCampus: {
+    // width: 500,
+    // height: 500,
+    // marginVertical: 20,
+    // marginBottom: 1,
+    // marginTop: 1,
+    // resizeMode: 'contain',
+    // bottom: 100,
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  //  hokiebirdLogo: {
+  //   position: 'absolute',
+  //   top: 20,
+  //   right: 20,
+  //   width: 70,
+  //   height: 70,
+  //   marginVertical: 20,
+  //   marginBottom: 1,
+  //   marginTop: 1,
+  //   resizeMode: 'contain',
+  // },
 });
