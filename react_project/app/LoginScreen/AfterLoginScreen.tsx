@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import * as Progress from 'react-native-progress';
 
 type AfterLoginScreenProps = {
@@ -7,7 +7,7 @@ type AfterLoginScreenProps = {
 };
 
 export default function AfterLoginScreen({ onBack }: AfterLoginScreenProps) {
-  const progressValue = 0.5; // Example progress value, yall cant add the real data here
+  const progressValue = 0.5; // Example progress value
 
   return (
     <View style={styles.container}>
@@ -19,6 +19,12 @@ export default function AfterLoginScreen({ onBack }: AfterLoginScreenProps) {
         style={styles.progressBar}
       />
       <Text style={styles.percentageText}>{`${(progressValue * 100).toFixed(0)}%`}</Text>
+      <TouchableOpacity style={styles.profileButton} onPress={() => console.log('Profile pressed')}>
+        <Text style={styles.profileText}>Profile</Text>
+      </TouchableOpacity>
+      <View style={styles.backButtonContainer}>
+        <Button title="Back to Login" onPress={onBack} />
+      </View>
     </View>
   );
 }
@@ -42,5 +48,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  profileButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    padding: 15,
+    backgroundColor: '#FF6600',
+    borderRadius: 5,
+  },
+  profileText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+  },
+  backButtonContainer: {
+    left: -705,
+    bottom: -310,
   },
 });

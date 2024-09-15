@@ -6,8 +6,8 @@ export default function App() {
   const [showLogin, setShowLogin] = useState(false);
 
   const text = "HokieServe";
-  const angles = [-25, -20, -25, -1, 0, 5, 10, 15, 20, 25];
-  const translations = [-60, -50, -40, -30, 0, 20, 30, 40, 50, 60];
+  const angles = [-25, -20, -15, -10, 0, 5, 10, 15, 20, 25];
+  const translations = [-60, -50, -40, -30, -10, 20, 30, 40, 50, 60];
 
   const curvedText = text.split('').map((char, index) => (
     <Text
@@ -34,9 +34,6 @@ export default function App() {
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.imageContainer}>
-          <TouchableOpacity style={styles.profileButton} onPress={() => console.log('Profile pressed')}>
-            <Text style={styles.profileText}>Profile</Text>
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => setShowLogin(true)}>
             <Image
               source={require('@/assets/images/hokiebird.png')}
@@ -82,20 +79,12 @@ const styles = StyleSheet.create({
   },
   HokieServeTxt: {
     fontSize: 40,
-    bottom: -50,
+    bottom: -120,
     fontWeight: 'bold',
     color: '#FF6600',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-  },
-  profileButton: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    padding: 15,
-    backgroundColor: '#FF6600',
-    borderRadius: 5,
   },
   profileText: {
     color: '#FFF',
