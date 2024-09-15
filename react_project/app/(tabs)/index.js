@@ -43,6 +43,11 @@ export default function App() {
           <View style={styles.textContainer}>
             {curvedText}
           </View>
+          <View style={styles.arrowContainer}>
+            <View style={styles.arrowShaft} />
+            <View style={styles.arrowHead} />
+            <Text style={styles.arrowLabel}>Click Hokiebird</Text>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -86,9 +91,42 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
   },
-  profileText: {
-    color: '#FFF',
+  arrowContainer: {
+    position: 'absolute',
+    top: 400,
+    left: 400,
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ rotate: '45deg' }],
+  },
+  arrowShaft: {
+    width: 200,
+    height: 4,
+    backgroundColor: '#FF6600',
+  },
+  arrowHead: {
+    width: 0,
+    height: 0,
+    borderLeftWidth: 10,
+    borderRightWidth: 10,
+    borderBottomWidth: 20,
+    borderStyle: 'solid',
+    backgroundColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: '#FF6600',
+    transform: [
+      { rotate: '-25deg' },
+      { translateX: -5 },
+      { translateY: -5 },
+    ],
+  },
+  arrowLabel: {
+    marginLeft: 10,
+    fontSize: 16,
+    right: 20,
     fontWeight: 'bold',
-    //taking a coffee break 
+    color: '#FF6600',
+    transform: [{ rotate: '-45deg' }],
   },
 });
